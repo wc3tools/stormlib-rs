@@ -972,3 +972,6 @@ extern "C" {
 extern "C" {
     pub fn SetLastError(dwErrCode: DWORD);
 }
+extern "C" {
+    pub fn GetLastError() -> DWORD;
+}

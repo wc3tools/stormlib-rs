@@ -1,6 +1,7 @@
 cp deps/StormLib/src/StormLib.h deps/StormLib/src/StormLib.hpp && \
 bindgen deps/StormLib/src/StormLib.hpp -o crates/stormlib-sys/src/bindings.rs \
   --whitelist-function "^S.+" \
+  --whitelist-function "GetLastError" \
   --whitelist-type "^S.+" \
   --whitelist-var STORMLIB_VERSION \
   --whitelist-var STORMLIB_VERSION_STRING \
