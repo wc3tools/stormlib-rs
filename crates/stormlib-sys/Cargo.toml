@@ -3,6 +3,7 @@ name = "stormlib-sys"
 version = "0.1.0"
 authors = ["Flux Xu <fluxxu@gmail.com>"]
 build = "build.rs"
+edition = "2018"
 
 [dependencies]
 libc = "0.2.17"
@@ -10,3 +11,9 @@ bitflags = "1.2.1"
 
 [build-dependencies]
 cmake = "0.1"
+
+[target.'cfg(windows)'.dependencies]
+winapi = { version = "0.3.8", features = ["winerror"] }
+
+[target.'cfg(unix)'.dependencies]
+libc = "0.2.71"

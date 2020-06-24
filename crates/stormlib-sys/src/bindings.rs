@@ -243,735 +243,723 @@ pub const _SFileInfoClass_SFileInfoCRC32: _SFileInfoClass = 56;
 pub type _SFileInfoClass = u32;
 pub use self::_SFileInfoClass as SFileInfoClass;
 pub type SFILE_DOWNLOAD_CALLBACK = ::std::option::Option<
-    unsafe extern "C" fn(
-        pvUserData: *mut ::std::os::raw::c_void,
-        ByteOffset: ULONGLONG,
-        dwTotalBytes: DWORD,
-    ),
+  unsafe extern "C" fn(
+    pvUserData: *mut ::std::os::raw::c_void,
+    ByteOffset: ULONGLONG,
+    dwTotalBytes: DWORD,
+  ),
 >;
 pub type SFILE_ADDFILE_CALLBACK = ::std::option::Option<
-    unsafe extern "C" fn(
-        pvUserData: *mut ::std::os::raw::c_void,
-        dwBytesWritten: DWORD,
-        dwTotalBytes: DWORD,
-        bFinalCall: bool,
-    ),
+  unsafe extern "C" fn(
+    pvUserData: *mut ::std::os::raw::c_void,
+    dwBytesWritten: DWORD,
+    dwTotalBytes: DWORD,
+    bFinalCall: bool,
+  ),
 >;
 pub type SFILE_COMPACT_CALLBACK = ::std::option::Option<
-    unsafe extern "C" fn(
-        pvUserData: *mut ::std::os::raw::c_void,
-        dwWorkType: DWORD,
-        BytesProcessed: ULONGLONG,
-        TotalBytes: ULONGLONG,
-    ),
+  unsafe extern "C" fn(
+    pvUserData: *mut ::std::os::raw::c_void,
+    dwWorkType: DWORD,
+    BytesProcessed: ULONGLONG,
+    TotalBytes: ULONGLONG,
+  ),
 >;
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct _TBitArray {
-    pub NumberOfBytes: DWORD,
-    pub NumberOfBits: DWORD,
-    pub Elements: [BYTE; 1usize],
+  pub NumberOfBytes: DWORD,
+  pub NumberOfBits: DWORD,
+  pub Elements: [BYTE; 1usize],
 }
 #[test]
 fn bindgen_test_layout__TBitArray() {
-    assert_eq!(
-        ::std::mem::size_of::<_TBitArray>(),
-        12usize,
-        concat!("Size of: ", stringify!(_TBitArray))
-    );
-    assert_eq!(
-        ::std::mem::align_of::<_TBitArray>(),
-        4usize,
-        concat!("Alignment of ", stringify!(_TBitArray))
-    );
-    assert_eq!(
-        unsafe { &(*(::std::ptr::null::<_TBitArray>())).NumberOfBytes as *const _ as usize },
-        0usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(_TBitArray),
-            "::",
-            stringify!(NumberOfBytes)
-        )
-    );
-    assert_eq!(
-        unsafe { &(*(::std::ptr::null::<_TBitArray>())).NumberOfBits as *const _ as usize },
-        4usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(_TBitArray),
-            "::",
-            stringify!(NumberOfBits)
-        )
-    );
-    assert_eq!(
-        unsafe { &(*(::std::ptr::null::<_TBitArray>())).Elements as *const _ as usize },
-        8usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(_TBitArray),
-            "::",
-            stringify!(Elements)
-        )
-    );
+  assert_eq!(
+    ::std::mem::size_of::<_TBitArray>(),
+    12usize,
+    concat!("Size of: ", stringify!(_TBitArray))
+  );
+  assert_eq!(
+    ::std::mem::align_of::<_TBitArray>(),
+    4usize,
+    concat!("Alignment of ", stringify!(_TBitArray))
+  );
+  assert_eq!(
+    unsafe { &(*(::std::ptr::null::<_TBitArray>())).NumberOfBytes as *const _ as usize },
+    0usize,
+    concat!(
+      "Offset of field: ",
+      stringify!(_TBitArray),
+      "::",
+      stringify!(NumberOfBytes)
+    )
+  );
+  assert_eq!(
+    unsafe { &(*(::std::ptr::null::<_TBitArray>())).NumberOfBits as *const _ as usize },
+    4usize,
+    concat!(
+      "Offset of field: ",
+      stringify!(_TBitArray),
+      "::",
+      stringify!(NumberOfBits)
+    )
+  );
+  assert_eq!(
+    unsafe { &(*(::std::ptr::null::<_TBitArray>())).Elements as *const _ as usize },
+    8usize,
+    concat!(
+      "Offset of field: ",
+      stringify!(_TBitArray),
+      "::",
+      stringify!(Elements)
+    )
+  );
 }
 pub type TBitArray = _TBitArray;
 extern "C" {
-    pub fn SetBits(
-        array: *mut TBitArray,
-        nBitPosition: ::std::os::raw::c_uint,
-        nBitLength: ::std::os::raw::c_uint,
-        pvBuffer: *mut ::std::os::raw::c_void,
-        nResultSize: ::std::os::raw::c_int,
-    );
+  pub fn SetBits(
+    array: *mut TBitArray,
+    nBitPosition: ::std::os::raw::c_uint,
+    nBitLength: ::std::os::raw::c_uint,
+    pvBuffer: *mut ::std::os::raw::c_void,
+    nResultSize: ::std::os::raw::c_int,
+  );
 }
 #[repr(C)]
 #[derive(Copy, Clone)]
 pub struct _SFILE_FIND_DATA {
-    pub cFileName: [::std::os::raw::c_char; 1024usize],
-    pub szPlainName: *mut ::std::os::raw::c_char,
-    pub dwHashIndex: DWORD,
-    pub dwBlockIndex: DWORD,
-    pub dwFileSize: DWORD,
-    pub dwFileFlags: DWORD,
-    pub dwCompSize: DWORD,
-    pub dwFileTimeLo: DWORD,
-    pub dwFileTimeHi: DWORD,
-    pub lcLocale: LCID,
+  pub cFileName: [::std::os::raw::c_char; 1024usize],
+  pub szPlainName: *mut ::std::os::raw::c_char,
+  pub dwHashIndex: DWORD,
+  pub dwBlockIndex: DWORD,
+  pub dwFileSize: DWORD,
+  pub dwFileFlags: DWORD,
+  pub dwCompSize: DWORD,
+  pub dwFileTimeLo: DWORD,
+  pub dwFileTimeHi: DWORD,
+  pub lcLocale: LCID,
 }
 #[test]
 fn bindgen_test_layout__SFILE_FIND_DATA() {
-    assert_eq!(
-        ::std::mem::size_of::<_SFILE_FIND_DATA>(),
-        1064usize,
-        concat!("Size of: ", stringify!(_SFILE_FIND_DATA))
-    );
-    assert_eq!(
-        ::std::mem::align_of::<_SFILE_FIND_DATA>(),
-        8usize,
-        concat!("Alignment of ", stringify!(_SFILE_FIND_DATA))
-    );
-    assert_eq!(
-        unsafe { &(*(::std::ptr::null::<_SFILE_FIND_DATA>())).cFileName as *const _ as usize },
-        0usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(_SFILE_FIND_DATA),
-            "::",
-            stringify!(cFileName)
-        )
-    );
-    assert_eq!(
-        unsafe { &(*(::std::ptr::null::<_SFILE_FIND_DATA>())).szPlainName as *const _ as usize },
-        1024usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(_SFILE_FIND_DATA),
-            "::",
-            stringify!(szPlainName)
-        )
-    );
-    assert_eq!(
-        unsafe { &(*(::std::ptr::null::<_SFILE_FIND_DATA>())).dwHashIndex as *const _ as usize },
-        1032usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(_SFILE_FIND_DATA),
-            "::",
-            stringify!(dwHashIndex)
-        )
-    );
-    assert_eq!(
-        unsafe { &(*(::std::ptr::null::<_SFILE_FIND_DATA>())).dwBlockIndex as *const _ as usize },
-        1036usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(_SFILE_FIND_DATA),
-            "::",
-            stringify!(dwBlockIndex)
-        )
-    );
-    assert_eq!(
-        unsafe { &(*(::std::ptr::null::<_SFILE_FIND_DATA>())).dwFileSize as *const _ as usize },
-        1040usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(_SFILE_FIND_DATA),
-            "::",
-            stringify!(dwFileSize)
-        )
-    );
-    assert_eq!(
-        unsafe { &(*(::std::ptr::null::<_SFILE_FIND_DATA>())).dwFileFlags as *const _ as usize },
-        1044usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(_SFILE_FIND_DATA),
-            "::",
-            stringify!(dwFileFlags)
-        )
-    );
-    assert_eq!(
-        unsafe { &(*(::std::ptr::null::<_SFILE_FIND_DATA>())).dwCompSize as *const _ as usize },
-        1048usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(_SFILE_FIND_DATA),
-            "::",
-            stringify!(dwCompSize)
-        )
-    );
-    assert_eq!(
-        unsafe { &(*(::std::ptr::null::<_SFILE_FIND_DATA>())).dwFileTimeLo as *const _ as usize },
-        1052usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(_SFILE_FIND_DATA),
-            "::",
-            stringify!(dwFileTimeLo)
-        )
-    );
-    assert_eq!(
-        unsafe { &(*(::std::ptr::null::<_SFILE_FIND_DATA>())).dwFileTimeHi as *const _ as usize },
-        1056usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(_SFILE_FIND_DATA),
-            "::",
-            stringify!(dwFileTimeHi)
-        )
-    );
-    assert_eq!(
-        unsafe { &(*(::std::ptr::null::<_SFILE_FIND_DATA>())).lcLocale as *const _ as usize },
-        1060usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(_SFILE_FIND_DATA),
-            "::",
-            stringify!(lcLocale)
-        )
-    );
+  assert_eq!(
+    ::std::mem::size_of::<_SFILE_FIND_DATA>(),
+    1064usize,
+    concat!("Size of: ", stringify!(_SFILE_FIND_DATA))
+  );
+  assert_eq!(
+    ::std::mem::align_of::<_SFILE_FIND_DATA>(),
+    8usize,
+    concat!("Alignment of ", stringify!(_SFILE_FIND_DATA))
+  );
+  assert_eq!(
+    unsafe { &(*(::std::ptr::null::<_SFILE_FIND_DATA>())).cFileName as *const _ as usize },
+    0usize,
+    concat!(
+      "Offset of field: ",
+      stringify!(_SFILE_FIND_DATA),
+      "::",
+      stringify!(cFileName)
+    )
+  );
+  assert_eq!(
+    unsafe { &(*(::std::ptr::null::<_SFILE_FIND_DATA>())).szPlainName as *const _ as usize },
+    1024usize,
+    concat!(
+      "Offset of field: ",
+      stringify!(_SFILE_FIND_DATA),
+      "::",
+      stringify!(szPlainName)
+    )
+  );
+  assert_eq!(
+    unsafe { &(*(::std::ptr::null::<_SFILE_FIND_DATA>())).dwHashIndex as *const _ as usize },
+    1032usize,
+    concat!(
+      "Offset of field: ",
+      stringify!(_SFILE_FIND_DATA),
+      "::",
+      stringify!(dwHashIndex)
+    )
+  );
+  assert_eq!(
+    unsafe { &(*(::std::ptr::null::<_SFILE_FIND_DATA>())).dwBlockIndex as *const _ as usize },
+    1036usize,
+    concat!(
+      "Offset of field: ",
+      stringify!(_SFILE_FIND_DATA),
+      "::",
+      stringify!(dwBlockIndex)
+    )
+  );
+  assert_eq!(
+    unsafe { &(*(::std::ptr::null::<_SFILE_FIND_DATA>())).dwFileSize as *const _ as usize },
+    1040usize,
+    concat!(
+      "Offset of field: ",
+      stringify!(_SFILE_FIND_DATA),
+      "::",
+      stringify!(dwFileSize)
+    )
+  );
+  assert_eq!(
+    unsafe { &(*(::std::ptr::null::<_SFILE_FIND_DATA>())).dwFileFlags as *const _ as usize },
+    1044usize,
+    concat!(
+      "Offset of field: ",
+      stringify!(_SFILE_FIND_DATA),
+      "::",
+      stringify!(dwFileFlags)
+    )
+  );
+  assert_eq!(
+    unsafe { &(*(::std::ptr::null::<_SFILE_FIND_DATA>())).dwCompSize as *const _ as usize },
+    1048usize,
+    concat!(
+      "Offset of field: ",
+      stringify!(_SFILE_FIND_DATA),
+      "::",
+      stringify!(dwCompSize)
+    )
+  );
+  assert_eq!(
+    unsafe { &(*(::std::ptr::null::<_SFILE_FIND_DATA>())).dwFileTimeLo as *const _ as usize },
+    1052usize,
+    concat!(
+      "Offset of field: ",
+      stringify!(_SFILE_FIND_DATA),
+      "::",
+      stringify!(dwFileTimeLo)
+    )
+  );
+  assert_eq!(
+    unsafe { &(*(::std::ptr::null::<_SFILE_FIND_DATA>())).dwFileTimeHi as *const _ as usize },
+    1056usize,
+    concat!(
+      "Offset of field: ",
+      stringify!(_SFILE_FIND_DATA),
+      "::",
+      stringify!(dwFileTimeHi)
+    )
+  );
+  assert_eq!(
+    unsafe { &(*(::std::ptr::null::<_SFILE_FIND_DATA>())).lcLocale as *const _ as usize },
+    1060usize,
+    concat!(
+      "Offset of field: ",
+      stringify!(_SFILE_FIND_DATA),
+      "::",
+      stringify!(lcLocale)
+    )
+  );
 }
 pub type SFILE_FIND_DATA = _SFILE_FIND_DATA;
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct _SFILE_CREATE_MPQ {
-    pub cbSize: DWORD,
-    pub dwMpqVersion: DWORD,
-    pub pvUserData: *mut ::std::os::raw::c_void,
-    pub cbUserData: DWORD,
-    pub dwStreamFlags: DWORD,
-    pub dwFileFlags1: DWORD,
-    pub dwFileFlags2: DWORD,
-    pub dwFileFlags3: DWORD,
-    pub dwAttrFlags: DWORD,
-    pub dwSectorSize: DWORD,
-    pub dwRawChunkSize: DWORD,
-    pub dwMaxFileCount: DWORD,
+  pub cbSize: DWORD,
+  pub dwMpqVersion: DWORD,
+  pub pvUserData: *mut ::std::os::raw::c_void,
+  pub cbUserData: DWORD,
+  pub dwStreamFlags: DWORD,
+  pub dwFileFlags1: DWORD,
+  pub dwFileFlags2: DWORD,
+  pub dwFileFlags3: DWORD,
+  pub dwAttrFlags: DWORD,
+  pub dwSectorSize: DWORD,
+  pub dwRawChunkSize: DWORD,
+  pub dwMaxFileCount: DWORD,
 }
 #[test]
 fn bindgen_test_layout__SFILE_CREATE_MPQ() {
-    assert_eq!(
-        ::std::mem::size_of::<_SFILE_CREATE_MPQ>(),
-        56usize,
-        concat!("Size of: ", stringify!(_SFILE_CREATE_MPQ))
-    );
-    assert_eq!(
-        ::std::mem::align_of::<_SFILE_CREATE_MPQ>(),
-        8usize,
-        concat!("Alignment of ", stringify!(_SFILE_CREATE_MPQ))
-    );
-    assert_eq!(
-        unsafe { &(*(::std::ptr::null::<_SFILE_CREATE_MPQ>())).cbSize as *const _ as usize },
-        0usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(_SFILE_CREATE_MPQ),
-            "::",
-            stringify!(cbSize)
-        )
-    );
-    assert_eq!(
-        unsafe { &(*(::std::ptr::null::<_SFILE_CREATE_MPQ>())).dwMpqVersion as *const _ as usize },
-        4usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(_SFILE_CREATE_MPQ),
-            "::",
-            stringify!(dwMpqVersion)
-        )
-    );
-    assert_eq!(
-        unsafe { &(*(::std::ptr::null::<_SFILE_CREATE_MPQ>())).pvUserData as *const _ as usize },
-        8usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(_SFILE_CREATE_MPQ),
-            "::",
-            stringify!(pvUserData)
-        )
-    );
-    assert_eq!(
-        unsafe { &(*(::std::ptr::null::<_SFILE_CREATE_MPQ>())).cbUserData as *const _ as usize },
-        16usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(_SFILE_CREATE_MPQ),
-            "::",
-            stringify!(cbUserData)
-        )
-    );
-    assert_eq!(
-        unsafe { &(*(::std::ptr::null::<_SFILE_CREATE_MPQ>())).dwStreamFlags as *const _ as usize },
-        20usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(_SFILE_CREATE_MPQ),
-            "::",
-            stringify!(dwStreamFlags)
-        )
-    );
-    assert_eq!(
-        unsafe { &(*(::std::ptr::null::<_SFILE_CREATE_MPQ>())).dwFileFlags1 as *const _ as usize },
-        24usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(_SFILE_CREATE_MPQ),
-            "::",
-            stringify!(dwFileFlags1)
-        )
-    );
-    assert_eq!(
-        unsafe { &(*(::std::ptr::null::<_SFILE_CREATE_MPQ>())).dwFileFlags2 as *const _ as usize },
-        28usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(_SFILE_CREATE_MPQ),
-            "::",
-            stringify!(dwFileFlags2)
-        )
-    );
-    assert_eq!(
-        unsafe { &(*(::std::ptr::null::<_SFILE_CREATE_MPQ>())).dwFileFlags3 as *const _ as usize },
-        32usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(_SFILE_CREATE_MPQ),
-            "::",
-            stringify!(dwFileFlags3)
-        )
-    );
-    assert_eq!(
-        unsafe { &(*(::std::ptr::null::<_SFILE_CREATE_MPQ>())).dwAttrFlags as *const _ as usize },
-        36usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(_SFILE_CREATE_MPQ),
-            "::",
-            stringify!(dwAttrFlags)
-        )
-    );
-    assert_eq!(
-        unsafe { &(*(::std::ptr::null::<_SFILE_CREATE_MPQ>())).dwSectorSize as *const _ as usize },
-        40usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(_SFILE_CREATE_MPQ),
-            "::",
-            stringify!(dwSectorSize)
-        )
-    );
-    assert_eq!(
-        unsafe {
-            &(*(::std::ptr::null::<_SFILE_CREATE_MPQ>())).dwRawChunkSize as *const _ as usize
-        },
-        44usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(_SFILE_CREATE_MPQ),
-            "::",
-            stringify!(dwRawChunkSize)
-        )
-    );
-    assert_eq!(
-        unsafe {
-            &(*(::std::ptr::null::<_SFILE_CREATE_MPQ>())).dwMaxFileCount as *const _ as usize
-        },
-        48usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(_SFILE_CREATE_MPQ),
-            "::",
-            stringify!(dwMaxFileCount)
-        )
-    );
+  assert_eq!(
+    ::std::mem::size_of::<_SFILE_CREATE_MPQ>(),
+    56usize,
+    concat!("Size of: ", stringify!(_SFILE_CREATE_MPQ))
+  );
+  assert_eq!(
+    ::std::mem::align_of::<_SFILE_CREATE_MPQ>(),
+    8usize,
+    concat!("Alignment of ", stringify!(_SFILE_CREATE_MPQ))
+  );
+  assert_eq!(
+    unsafe { &(*(::std::ptr::null::<_SFILE_CREATE_MPQ>())).cbSize as *const _ as usize },
+    0usize,
+    concat!(
+      "Offset of field: ",
+      stringify!(_SFILE_CREATE_MPQ),
+      "::",
+      stringify!(cbSize)
+    )
+  );
+  assert_eq!(
+    unsafe { &(*(::std::ptr::null::<_SFILE_CREATE_MPQ>())).dwMpqVersion as *const _ as usize },
+    4usize,
+    concat!(
+      "Offset of field: ",
+      stringify!(_SFILE_CREATE_MPQ),
+      "::",
+      stringify!(dwMpqVersion)
+    )
+  );
+  assert_eq!(
+    unsafe { &(*(::std::ptr::null::<_SFILE_CREATE_MPQ>())).pvUserData as *const _ as usize },
+    8usize,
+    concat!(
+      "Offset of field: ",
+      stringify!(_SFILE_CREATE_MPQ),
+      "::",
+      stringify!(pvUserData)
+    )
+  );
+  assert_eq!(
+    unsafe { &(*(::std::ptr::null::<_SFILE_CREATE_MPQ>())).cbUserData as *const _ as usize },
+    16usize,
+    concat!(
+      "Offset of field: ",
+      stringify!(_SFILE_CREATE_MPQ),
+      "::",
+      stringify!(cbUserData)
+    )
+  );
+  assert_eq!(
+    unsafe { &(*(::std::ptr::null::<_SFILE_CREATE_MPQ>())).dwStreamFlags as *const _ as usize },
+    20usize,
+    concat!(
+      "Offset of field: ",
+      stringify!(_SFILE_CREATE_MPQ),
+      "::",
+      stringify!(dwStreamFlags)
+    )
+  );
+  assert_eq!(
+    unsafe { &(*(::std::ptr::null::<_SFILE_CREATE_MPQ>())).dwFileFlags1 as *const _ as usize },
+    24usize,
+    concat!(
+      "Offset of field: ",
+      stringify!(_SFILE_CREATE_MPQ),
+      "::",
+      stringify!(dwFileFlags1)
+    )
+  );
+  assert_eq!(
+    unsafe { &(*(::std::ptr::null::<_SFILE_CREATE_MPQ>())).dwFileFlags2 as *const _ as usize },
+    28usize,
+    concat!(
+      "Offset of field: ",
+      stringify!(_SFILE_CREATE_MPQ),
+      "::",
+      stringify!(dwFileFlags2)
+    )
+  );
+  assert_eq!(
+    unsafe { &(*(::std::ptr::null::<_SFILE_CREATE_MPQ>())).dwFileFlags3 as *const _ as usize },
+    32usize,
+    concat!(
+      "Offset of field: ",
+      stringify!(_SFILE_CREATE_MPQ),
+      "::",
+      stringify!(dwFileFlags3)
+    )
+  );
+  assert_eq!(
+    unsafe { &(*(::std::ptr::null::<_SFILE_CREATE_MPQ>())).dwAttrFlags as *const _ as usize },
+    36usize,
+    concat!(
+      "Offset of field: ",
+      stringify!(_SFILE_CREATE_MPQ),
+      "::",
+      stringify!(dwAttrFlags)
+    )
+  );
+  assert_eq!(
+    unsafe { &(*(::std::ptr::null::<_SFILE_CREATE_MPQ>())).dwSectorSize as *const _ as usize },
+    40usize,
+    concat!(
+      "Offset of field: ",
+      stringify!(_SFILE_CREATE_MPQ),
+      "::",
+      stringify!(dwSectorSize)
+    )
+  );
+  assert_eq!(
+    unsafe { &(*(::std::ptr::null::<_SFILE_CREATE_MPQ>())).dwRawChunkSize as *const _ as usize },
+    44usize,
+    concat!(
+      "Offset of field: ",
+      stringify!(_SFILE_CREATE_MPQ),
+      "::",
+      stringify!(dwRawChunkSize)
+    )
+  );
+  assert_eq!(
+    unsafe { &(*(::std::ptr::null::<_SFILE_CREATE_MPQ>())).dwMaxFileCount as *const _ as usize },
+    48usize,
+    concat!(
+      "Offset of field: ",
+      stringify!(_SFILE_CREATE_MPQ),
+      "::",
+      stringify!(dwMaxFileCount)
+    )
+  );
 }
 pub type SFILE_CREATE_MPQ = _SFILE_CREATE_MPQ;
 pub type PSFILE_CREATE_MPQ = *mut _SFILE_CREATE_MPQ;
 pub type SFILESETLOCALE = ::std::option::Option<unsafe extern "C" fn(arg1: LCID) -> LCID>;
 pub type SFILEOPENARCHIVE = ::std::option::Option<
-    unsafe extern "C" fn(
-        arg1: *const ::std::os::raw::c_char,
-        arg2: DWORD,
-        arg3: DWORD,
-        arg4: *mut HANDLE,
-    ) -> bool,
+  unsafe extern "C" fn(
+    arg1: *const ::std::os::raw::c_char,
+    arg2: DWORD,
+    arg3: DWORD,
+    arg4: *mut HANDLE,
+  ) -> bool,
 >;
 pub type SFILECLOSEARCHIVE = ::std::option::Option<unsafe extern "C" fn(arg1: HANDLE) -> bool>;
 pub type SFILEOPENFILEEX = ::std::option::Option<
-    unsafe extern "C" fn(
-        arg1: HANDLE,
-        arg2: *const ::std::os::raw::c_char,
-        arg3: DWORD,
-        arg4: *mut HANDLE,
-    ) -> bool,
+  unsafe extern "C" fn(
+    arg1: HANDLE,
+    arg2: *const ::std::os::raw::c_char,
+    arg3: DWORD,
+    arg4: *mut HANDLE,
+  ) -> bool,
 >;
 pub type SFILECLOSEFILE = ::std::option::Option<unsafe extern "C" fn(arg1: HANDLE) -> bool>;
 pub type SFILEGETFILESIZE =
-    ::std::option::Option<unsafe extern "C" fn(arg1: HANDLE, arg2: LPDWORD) -> DWORD>;
+  ::std::option::Option<unsafe extern "C" fn(arg1: HANDLE, arg2: LPDWORD) -> DWORD>;
 pub type SFILESETFILEPOINTER = ::std::option::Option<
-    unsafe extern "C" fn(arg1: HANDLE, arg2: LONG, arg3: *mut LONG, arg4: DWORD) -> DWORD,
+  unsafe extern "C" fn(arg1: HANDLE, arg2: LONG, arg3: *mut LONG, arg4: DWORD) -> DWORD,
 >;
 pub type SFILEREADFILE = ::std::option::Option<
-    unsafe extern "C" fn(
-        arg1: HANDLE,
-        arg2: *mut ::std::os::raw::c_void,
-        arg3: DWORD,
-        arg4: LPDWORD,
-        arg5: LPOVERLAPPED,
-    ) -> bool,
+  unsafe extern "C" fn(
+    arg1: HANDLE,
+    arg2: *mut ::std::os::raw::c_void,
+    arg3: DWORD,
+    arg4: LPDWORD,
+    arg5: LPOVERLAPPED,
+  ) -> bool,
 >;
 extern "C" {
-    pub fn SFileGetLocale() -> LCID;
+  pub fn SFileGetLocale() -> LCID;
 }
 extern "C" {
-    pub fn SFileSetLocale(lcNewLocale: LCID) -> LCID;
+  pub fn SFileSetLocale(lcNewLocale: LCID) -> LCID;
 }
 extern "C" {
-    pub fn SFileOpenArchive(
-        szMpqName: *const TCHAR,
-        dwPriority: DWORD,
-        dwFlags: DWORD,
-        phMpq: *mut HANDLE,
-    ) -> bool;
+  pub fn SFileOpenArchive(
+    szMpqName: *const TCHAR,
+    dwPriority: DWORD,
+    dwFlags: DWORD,
+    phMpq: *mut HANDLE,
+  ) -> bool;
 }
 extern "C" {
-    pub fn SFileCreateArchive(
-        szMpqName: *const TCHAR,
-        dwCreateFlags: DWORD,
-        dwMaxFileCount: DWORD,
-        phMpq: *mut HANDLE,
-    ) -> bool;
+  pub fn SFileCreateArchive(
+    szMpqName: *const TCHAR,
+    dwCreateFlags: DWORD,
+    dwMaxFileCount: DWORD,
+    phMpq: *mut HANDLE,
+  ) -> bool;
 }
 extern "C" {
-    pub fn SFileCreateArchive2(
-        szMpqName: *const TCHAR,
-        pCreateInfo: PSFILE_CREATE_MPQ,
-        phMpq: *mut HANDLE,
-    ) -> bool;
+  pub fn SFileCreateArchive2(
+    szMpqName: *const TCHAR,
+    pCreateInfo: PSFILE_CREATE_MPQ,
+    phMpq: *mut HANDLE,
+  ) -> bool;
 }
 extern "C" {
-    pub fn SFileSetDownloadCallback(
-        hMpq: HANDLE,
-        DownloadCB: SFILE_DOWNLOAD_CALLBACK,
-        pvUserData: *mut ::std::os::raw::c_void,
-    ) -> bool;
+  pub fn SFileSetDownloadCallback(
+    hMpq: HANDLE,
+    DownloadCB: SFILE_DOWNLOAD_CALLBACK,
+    pvUserData: *mut ::std::os::raw::c_void,
+  ) -> bool;
 }
 extern "C" {
-    pub fn SFileFlushArchive(hMpq: HANDLE) -> bool;
+  pub fn SFileFlushArchive(hMpq: HANDLE) -> bool;
 }
 extern "C" {
-    pub fn SFileCloseArchive(hMpq: HANDLE) -> bool;
+  pub fn SFileCloseArchive(hMpq: HANDLE) -> bool;
 }
 extern "C" {
-    pub fn SFileAddListFile(hMpq: HANDLE, szListFile: *const TCHAR) -> ::std::os::raw::c_int;
+  pub fn SFileAddListFile(hMpq: HANDLE, szListFile: *const TCHAR) -> ::std::os::raw::c_int;
 }
 extern "C" {
-    pub fn SFileSetCompactCallback(
-        hMpq: HANDLE,
-        CompactCB: SFILE_COMPACT_CALLBACK,
-        pvUserData: *mut ::std::os::raw::c_void,
-    ) -> bool;
+  pub fn SFileSetCompactCallback(
+    hMpq: HANDLE,
+    CompactCB: SFILE_COMPACT_CALLBACK,
+    pvUserData: *mut ::std::os::raw::c_void,
+  ) -> bool;
 }
 extern "C" {
-    pub fn SFileCompactArchive(hMpq: HANDLE, szListFile: *const TCHAR, bReserved: bool) -> bool;
+  pub fn SFileCompactArchive(hMpq: HANDLE, szListFile: *const TCHAR, bReserved: bool) -> bool;
 }
 extern "C" {
-    pub fn SFileGetMaxFileCount(hMpq: HANDLE) -> DWORD;
+  pub fn SFileGetMaxFileCount(hMpq: HANDLE) -> DWORD;
 }
 extern "C" {
-    pub fn SFileSetMaxFileCount(hMpq: HANDLE, dwMaxFileCount: DWORD) -> bool;
+  pub fn SFileSetMaxFileCount(hMpq: HANDLE, dwMaxFileCount: DWORD) -> bool;
 }
 extern "C" {
-    pub fn SFileGetAttributes(hMpq: HANDLE) -> DWORD;
+  pub fn SFileGetAttributes(hMpq: HANDLE) -> DWORD;
 }
 extern "C" {
-    pub fn SFileSetAttributes(hMpq: HANDLE, dwFlags: DWORD) -> bool;
+  pub fn SFileSetAttributes(hMpq: HANDLE, dwFlags: DWORD) -> bool;
 }
 extern "C" {
-    pub fn SFileUpdateFileAttributes(
-        hMpq: HANDLE,
-        szFileName: *const ::std::os::raw::c_char,
-    ) -> bool;
+  pub fn SFileUpdateFileAttributes(hMpq: HANDLE, szFileName: *const ::std::os::raw::c_char)
+    -> bool;
 }
 extern "C" {
-    pub fn SFileOpenPatchArchive(
-        hMpq: HANDLE,
-        szPatchMpqName: *const TCHAR,
-        szPatchPathPrefix: *const ::std::os::raw::c_char,
-        dwFlags: DWORD,
-    ) -> bool;
+  pub fn SFileOpenPatchArchive(
+    hMpq: HANDLE,
+    szPatchMpqName: *const TCHAR,
+    szPatchPathPrefix: *const ::std::os::raw::c_char,
+    dwFlags: DWORD,
+  ) -> bool;
 }
 extern "C" {
-    pub fn SFileIsPatchedArchive(hMpq: HANDLE) -> bool;
+  pub fn SFileIsPatchedArchive(hMpq: HANDLE) -> bool;
 }
 extern "C" {
-    pub fn SFileHasFile(hMpq: HANDLE, szFileName: *const ::std::os::raw::c_char) -> bool;
+  pub fn SFileHasFile(hMpq: HANDLE, szFileName: *const ::std::os::raw::c_char) -> bool;
 }
 extern "C" {
-    pub fn SFileOpenFileEx(
-        hMpq: HANDLE,
-        szFileName: *const ::std::os::raw::c_char,
-        dwSearchScope: DWORD,
-        phFile: *mut HANDLE,
-    ) -> bool;
+  pub fn SFileOpenFileEx(
+    hMpq: HANDLE,
+    szFileName: *const ::std::os::raw::c_char,
+    dwSearchScope: DWORD,
+    phFile: *mut HANDLE,
+  ) -> bool;
 }
 extern "C" {
-    pub fn SFileGetFileSize(hFile: HANDLE, pdwFileSizeHigh: LPDWORD) -> DWORD;
+  pub fn SFileGetFileSize(hFile: HANDLE, pdwFileSizeHigh: LPDWORD) -> DWORD;
 }
 extern "C" {
-    pub fn SFileSetFilePointer(
-        hFile: HANDLE,
-        lFilePos: LONG,
-        plFilePosHigh: *mut LONG,
-        dwMoveMethod: DWORD,
-    ) -> DWORD;
+  pub fn SFileSetFilePointer(
+    hFile: HANDLE,
+    lFilePos: LONG,
+    plFilePosHigh: *mut LONG,
+    dwMoveMethod: DWORD,
+  ) -> DWORD;
 }
 extern "C" {
-    pub fn SFileReadFile(
-        hFile: HANDLE,
-        lpBuffer: *mut ::std::os::raw::c_void,
-        dwToRead: DWORD,
-        pdwRead: LPDWORD,
-        lpOverlapped: LPOVERLAPPED,
-    ) -> bool;
+  pub fn SFileReadFile(
+    hFile: HANDLE,
+    lpBuffer: *mut ::std::os::raw::c_void,
+    dwToRead: DWORD,
+    pdwRead: LPDWORD,
+    lpOverlapped: LPOVERLAPPED,
+  ) -> bool;
 }
 extern "C" {
-    pub fn SFileCloseFile(hFile: HANDLE) -> bool;
+  pub fn SFileCloseFile(hFile: HANDLE) -> bool;
 }
 extern "C" {
-    pub fn SFileGetFileInfo(
-        hMpqOrFile: HANDLE,
-        InfoClass: SFileInfoClass,
-        pvFileInfo: *mut ::std::os::raw::c_void,
-        cbFileInfo: DWORD,
-        pcbLengthNeeded: LPDWORD,
-    ) -> bool;
+  pub fn SFileGetFileInfo(
+    hMpqOrFile: HANDLE,
+    InfoClass: SFileInfoClass,
+    pvFileInfo: *mut ::std::os::raw::c_void,
+    cbFileInfo: DWORD,
+    pcbLengthNeeded: LPDWORD,
+  ) -> bool;
 }
 extern "C" {
-    pub fn SFileGetFileName(hFile: HANDLE, szFileName: *mut ::std::os::raw::c_char) -> bool;
+  pub fn SFileGetFileName(hFile: HANDLE, szFileName: *mut ::std::os::raw::c_char) -> bool;
 }
 extern "C" {
-    pub fn SFileFreeFileInfo(
-        pvFileInfo: *mut ::std::os::raw::c_void,
-        InfoClass: SFileInfoClass,
-    ) -> bool;
+  pub fn SFileFreeFileInfo(
+    pvFileInfo: *mut ::std::os::raw::c_void,
+    InfoClass: SFileInfoClass,
+  ) -> bool;
 }
 extern "C" {
-    pub fn SFileExtractFile(
-        hMpq: HANDLE,
-        szToExtract: *const ::std::os::raw::c_char,
-        szExtracted: *const TCHAR,
-        dwSearchScope: DWORD,
-    ) -> bool;
+  pub fn SFileExtractFile(
+    hMpq: HANDLE,
+    szToExtract: *const ::std::os::raw::c_char,
+    szExtracted: *const TCHAR,
+    dwSearchScope: DWORD,
+  ) -> bool;
 }
 extern "C" {
-    pub fn SFileGetFileChecksums(
-        hMpq: HANDLE,
-        szFileName: *const ::std::os::raw::c_char,
-        pdwCrc32: LPDWORD,
-        pMD5: *mut ::std::os::raw::c_char,
-    ) -> bool;
+  pub fn SFileGetFileChecksums(
+    hMpq: HANDLE,
+    szFileName: *const ::std::os::raw::c_char,
+    pdwCrc32: LPDWORD,
+    pMD5: *mut ::std::os::raw::c_char,
+  ) -> bool;
 }
 extern "C" {
-    pub fn SFileVerifyFile(
-        hMpq: HANDLE,
-        szFileName: *const ::std::os::raw::c_char,
-        dwFlags: DWORD,
-    ) -> DWORD;
+  pub fn SFileVerifyFile(
+    hMpq: HANDLE,
+    szFileName: *const ::std::os::raw::c_char,
+    dwFlags: DWORD,
+  ) -> DWORD;
 }
 extern "C" {
-    pub fn SFileVerifyRawData(
-        hMpq: HANDLE,
-        dwWhatToVerify: DWORD,
-        szFileName: *const ::std::os::raw::c_char,
-    ) -> ::std::os::raw::c_int;
+  pub fn SFileVerifyRawData(
+    hMpq: HANDLE,
+    dwWhatToVerify: DWORD,
+    szFileName: *const ::std::os::raw::c_char,
+  ) -> ::std::os::raw::c_int;
 }
 extern "C" {
-    pub fn SFileSignArchive(hMpq: HANDLE, dwSignatureType: DWORD) -> bool;
+  pub fn SFileSignArchive(hMpq: HANDLE, dwSignatureType: DWORD) -> bool;
 }
 extern "C" {
-    pub fn SFileVerifyArchive(hMpq: HANDLE) -> DWORD;
+  pub fn SFileVerifyArchive(hMpq: HANDLE) -> DWORD;
 }
 extern "C" {
-    pub fn SFileFindFirstFile(
-        hMpq: HANDLE,
-        szMask: *const ::std::os::raw::c_char,
-        lpFindFileData: *mut SFILE_FIND_DATA,
-        szListFile: *const TCHAR,
-    ) -> HANDLE;
+  pub fn SFileFindFirstFile(
+    hMpq: HANDLE,
+    szMask: *const ::std::os::raw::c_char,
+    lpFindFileData: *mut SFILE_FIND_DATA,
+    szListFile: *const TCHAR,
+  ) -> HANDLE;
 }
 extern "C" {
-    pub fn SFileFindNextFile(hFind: HANDLE, lpFindFileData: *mut SFILE_FIND_DATA) -> bool;
+  pub fn SFileFindNextFile(hFind: HANDLE, lpFindFileData: *mut SFILE_FIND_DATA) -> bool;
 }
 extern "C" {
-    pub fn SFileFindClose(hFind: HANDLE) -> bool;
+  pub fn SFileFindClose(hFind: HANDLE) -> bool;
 }
 extern "C" {
-    pub fn SListFileFindFirstFile(
-        hMpq: HANDLE,
-        szListFile: *const TCHAR,
-        szMask: *const ::std::os::raw::c_char,
-        lpFindFileData: *mut SFILE_FIND_DATA,
-    ) -> HANDLE;
+  pub fn SListFileFindFirstFile(
+    hMpq: HANDLE,
+    szListFile: *const TCHAR,
+    szMask: *const ::std::os::raw::c_char,
+    lpFindFileData: *mut SFILE_FIND_DATA,
+  ) -> HANDLE;
 }
 extern "C" {
-    pub fn SListFileFindNextFile(hFind: HANDLE, lpFindFileData: *mut SFILE_FIND_DATA) -> bool;
+  pub fn SListFileFindNextFile(hFind: HANDLE, lpFindFileData: *mut SFILE_FIND_DATA) -> bool;
 }
 extern "C" {
-    pub fn SListFileFindClose(hFind: HANDLE) -> bool;
+  pub fn SListFileFindClose(hFind: HANDLE) -> bool;
 }
 extern "C" {
-    pub fn SFileEnumLocales(
-        hMpq: HANDLE,
-        szFileName: *const ::std::os::raw::c_char,
-        plcLocales: *mut LCID,
-        pdwMaxLocales: LPDWORD,
-        dwSearchScope: DWORD,
-    ) -> ::std::os::raw::c_int;
+  pub fn SFileEnumLocales(
+    hMpq: HANDLE,
+    szFileName: *const ::std::os::raw::c_char,
+    plcLocales: *mut LCID,
+    pdwMaxLocales: LPDWORD,
+    dwSearchScope: DWORD,
+  ) -> ::std::os::raw::c_int;
 }
 extern "C" {
-    pub fn SFileCreateFile(
-        hMpq: HANDLE,
-        szArchivedName: *const ::std::os::raw::c_char,
-        FileTime: ULONGLONG,
-        dwFileSize: DWORD,
-        lcLocale: LCID,
-        dwFlags: DWORD,
-        phFile: *mut HANDLE,
-    ) -> bool;
+  pub fn SFileCreateFile(
+    hMpq: HANDLE,
+    szArchivedName: *const ::std::os::raw::c_char,
+    FileTime: ULONGLONG,
+    dwFileSize: DWORD,
+    lcLocale: LCID,
+    dwFlags: DWORD,
+    phFile: *mut HANDLE,
+  ) -> bool;
 }
 extern "C" {
-    pub fn SFileWriteFile(
-        hFile: HANDLE,
-        pvData: *const ::std::os::raw::c_void,
-        dwSize: DWORD,
-        dwCompression: DWORD,
-    ) -> bool;
+  pub fn SFileWriteFile(
+    hFile: HANDLE,
+    pvData: *const ::std::os::raw::c_void,
+    dwSize: DWORD,
+    dwCompression: DWORD,
+  ) -> bool;
 }
 extern "C" {
-    pub fn SFileFinishFile(hFile: HANDLE) -> bool;
+  pub fn SFileFinishFile(hFile: HANDLE) -> bool;
 }
 extern "C" {
-    pub fn SFileAddFileEx(
-        hMpq: HANDLE,
-        szFileName: *const TCHAR,
-        szArchivedName: *const ::std::os::raw::c_char,
-        dwFlags: DWORD,
-        dwCompression: DWORD,
-        dwCompressionNext: DWORD,
-    ) -> bool;
+  pub fn SFileAddFileEx(
+    hMpq: HANDLE,
+    szFileName: *const TCHAR,
+    szArchivedName: *const ::std::os::raw::c_char,
+    dwFlags: DWORD,
+    dwCompression: DWORD,
+    dwCompressionNext: DWORD,
+  ) -> bool;
 }
 extern "C" {
-    pub fn SFileAddFile(
-        hMpq: HANDLE,
-        szFileName: *const TCHAR,
-        szArchivedName: *const ::std::os::raw::c_char,
-        dwFlags: DWORD,
-    ) -> bool;
+  pub fn SFileAddFile(
+    hMpq: HANDLE,
+    szFileName: *const TCHAR,
+    szArchivedName: *const ::std::os::raw::c_char,
+    dwFlags: DWORD,
+  ) -> bool;
 }
 extern "C" {
-    pub fn SFileAddWave(
-        hMpq: HANDLE,
-        szFileName: *const TCHAR,
-        szArchivedName: *const ::std::os::raw::c_char,
-        dwFlags: DWORD,
-        dwQuality: DWORD,
-    ) -> bool;
+  pub fn SFileAddWave(
+    hMpq: HANDLE,
+    szFileName: *const TCHAR,
+    szArchivedName: *const ::std::os::raw::c_char,
+    dwFlags: DWORD,
+    dwQuality: DWORD,
+  ) -> bool;
 }
 extern "C" {
-    pub fn SFileRemoveFile(
-        hMpq: HANDLE,
-        szFileName: *const ::std::os::raw::c_char,
-        dwSearchScope: DWORD,
-    ) -> bool;
+  pub fn SFileRemoveFile(
+    hMpq: HANDLE,
+    szFileName: *const ::std::os::raw::c_char,
+    dwSearchScope: DWORD,
+  ) -> bool;
 }
 extern "C" {
-    pub fn SFileRenameFile(
-        hMpq: HANDLE,
-        szOldFileName: *const ::std::os::raw::c_char,
-        szNewFileName: *const ::std::os::raw::c_char,
-    ) -> bool;
+  pub fn SFileRenameFile(
+    hMpq: HANDLE,
+    szOldFileName: *const ::std::os::raw::c_char,
+    szNewFileName: *const ::std::os::raw::c_char,
+  ) -> bool;
 }
 extern "C" {
-    pub fn SFileSetFileLocale(hFile: HANDLE, lcNewLocale: LCID) -> bool;
+  pub fn SFileSetFileLocale(hFile: HANDLE, lcNewLocale: LCID) -> bool;
 }
 extern "C" {
-    pub fn SFileSetDataCompression(DataCompression: DWORD) -> bool;
+  pub fn SFileSetDataCompression(DataCompression: DWORD) -> bool;
 }
 extern "C" {
-    pub fn SFileSetAddFileCallback(
-        hMpq: HANDLE,
-        AddFileCB: SFILE_ADDFILE_CALLBACK,
-        pvUserData: *mut ::std::os::raw::c_void,
-    ) -> bool;
+  pub fn SFileSetAddFileCallback(
+    hMpq: HANDLE,
+    AddFileCB: SFILE_ADDFILE_CALLBACK,
+    pvUserData: *mut ::std::os::raw::c_void,
+  ) -> bool;
 }
 extern "C" {
-    pub fn SCompImplode(
-        pvOutBuffer: *mut ::std::os::raw::c_void,
-        pcbOutBuffer: *mut ::std::os::raw::c_int,
-        pvInBuffer: *mut ::std::os::raw::c_void,
-        cbInBuffer: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int;
+  pub fn SCompImplode(
+    pvOutBuffer: *mut ::std::os::raw::c_void,
+    pcbOutBuffer: *mut ::std::os::raw::c_int,
+    pvInBuffer: *mut ::std::os::raw::c_void,
+    cbInBuffer: ::std::os::raw::c_int,
+  ) -> ::std::os::raw::c_int;
 }
 extern "C" {
-    pub fn SCompExplode(
-        pvOutBuffer: *mut ::std::os::raw::c_void,
-        pcbOutBuffer: *mut ::std::os::raw::c_int,
-        pvInBuffer: *mut ::std::os::raw::c_void,
-        cbInBuffer: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int;
+  pub fn SCompExplode(
+    pvOutBuffer: *mut ::std::os::raw::c_void,
+    pcbOutBuffer: *mut ::std::os::raw::c_int,
+    pvInBuffer: *mut ::std::os::raw::c_void,
+    cbInBuffer: ::std::os::raw::c_int,
+  ) -> ::std::os::raw::c_int;
 }
 extern "C" {
-    pub fn SCompCompress(
-        pvOutBuffer: *mut ::std::os::raw::c_void,
-        pcbOutBuffer: *mut ::std::os::raw::c_int,
-        pvInBuffer: *mut ::std::os::raw::c_void,
-        cbInBuffer: ::std::os::raw::c_int,
-        uCompressionMask: ::std::os::raw::c_uint,
-        nCmpType: ::std::os::raw::c_int,
-        nCmpLevel: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int;
+  pub fn SCompCompress(
+    pvOutBuffer: *mut ::std::os::raw::c_void,
+    pcbOutBuffer: *mut ::std::os::raw::c_int,
+    pvInBuffer: *mut ::std::os::raw::c_void,
+    cbInBuffer: ::std::os::raw::c_int,
+    uCompressionMask: ::std::os::raw::c_uint,
+    nCmpType: ::std::os::raw::c_int,
+    nCmpLevel: ::std::os::raw::c_int,
+  ) -> ::std::os::raw::c_int;
 }
 extern "C" {
-    pub fn SCompDecompress(
-        pvOutBuffer: *mut ::std::os::raw::c_void,
-        pcbOutBuffer: *mut ::std::os::raw::c_int,
-        pvInBuffer: *mut ::std::os::raw::c_void,
-        cbInBuffer: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int;
+  pub fn SCompDecompress(
+    pvOutBuffer: *mut ::std::os::raw::c_void,
+    pcbOutBuffer: *mut ::std::os::raw::c_int,
+    pvInBuffer: *mut ::std::os::raw::c_void,
+    cbInBuffer: ::std::os::raw::c_int,
+  ) -> ::std::os::raw::c_int;
 }
 extern "C" {
-    pub fn SCompDecompress2(
-        pvOutBuffer: *mut ::std::os::raw::c_void,
-        pcbOutBuffer: *mut ::std::os::raw::c_int,
-        pvInBuffer: *mut ::std::os::raw::c_void,
-        cbInBuffer: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int;
-}
-extern "C" {
-    pub fn SetLastError(dwErrCode: DWORD);
-}
-extern "C" {
-    pub fn GetLastError() -> DWORD;
+  pub fn SCompDecompress2(
+    pvOutBuffer: *mut ::std::os::raw::c_void,
+    pcbOutBuffer: *mut ::std::os::raw::c_int,
+    pvInBuffer: *mut ::std::os::raw::c_void,
+    cbInBuffer: ::std::os::raw::c_int,
+  ) -> ::std::os::raw::c_int;
 }
