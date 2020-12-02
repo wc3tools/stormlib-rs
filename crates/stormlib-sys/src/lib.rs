@@ -21,7 +21,7 @@ mod error_codes {
   pub const ERROR_NOT_ENOUGH_MEMORY: i32 = libc::ENOMEM;
   pub const ERROR_NOT_SUPPORTED: i32 = libc::ENOTSUP;
   pub const ERROR_INVALID_PARAMETER: i32 = libc::EINVAL;
-  pub const ERROR_NEGATIVE_SEEK: i32 = libc::EINVAL;
+  pub const ERROR_NEGATIVE_SEEK: i32 = libc::ESPIPE;
   pub const ERROR_DISK_FULL: i32 = libc::ENOSPC;
   pub const ERROR_ALREADY_EXISTS: i32 = libc::EEXIST;
   pub const ERROR_INSUFFICIENT_BUFFER: i32 = libc::ENOBUFS;
