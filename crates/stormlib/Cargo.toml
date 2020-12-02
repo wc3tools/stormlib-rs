@@ -9,5 +9,5 @@ edition = "2018"
 [dependencies]
 stormlib-sys = "0.1.1"
 bitflags = "1.2.1"
-libc = "0.2.71"
+libc = "0.2.80"
 thiserror = "1"
