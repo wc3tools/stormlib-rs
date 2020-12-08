@@ -156,3 +156,19 @@ fn test_read() {
     std::fs::read("../../samples/war3map.j").unwrap()
   );
 }
+
+#[cfg(target_os = "windows")]
+#[test]
+fn test_read_unicode() {
+  use widestring::U16String;
+  let mut archive = Archive::open(
+    U16String::from_str("../../samples/中文.w3x").to_os_string(),
+    OpenArchiveFlags::MPQ_OPEN_NO_LISTFILE | OpenArchiveFlags::MPQ_OPEN_NO_ATTRIBUTES,
+  )
+    .unwrap();
+  let mut f = archive.open_file("war3map.j").unwrap();
+  assert_eq!(
+    f.read_all().unwrap(),
+    std::fs::read("../../samples/war3map.j").unwrap()
+  );
+}

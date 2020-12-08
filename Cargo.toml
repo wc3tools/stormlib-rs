@@ -1,6 +1,7 @@
 [workspace]
 members = [
   "./crates/stormlib-sys",
+  "./crates/stormlib-bindgen",
   "./crates/stormlib"
 ]
 

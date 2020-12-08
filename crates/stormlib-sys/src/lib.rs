@@ -34,7 +34,12 @@ mod error_codes {
 
 pub use error_codes::*;
 
-include!("./bindings.rs");
+#[cfg(target_os = "windows")]
+include!("./bindings_windows.rs");
+#[cfg(target_os = "linux")]
+include!("./bindings_linux.rs");
+#[cfg(target_os = "macos")]
+include!("./bindings_macos.rs");
 
 extern "C" {
   pub fn SetLastError(dwErrCode: ErrorCode);

@@ -11,3 +11,6 @@ stormlib-sys = "0.1"
 bitflags = "1.2.1"
 libc = "0.2.71"
 thiserror = "1"
+
+[target.'cfg(windows)'.dev-dependencies]
+widestring = "0.4.2"
