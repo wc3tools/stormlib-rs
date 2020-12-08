@@ -19,7 +19,19 @@ fn test_w3x() {
   use std::ffi::*;
   use std::ptr;
 
+  #[cfg(not(target_os = "windows"))]
   let path = CString::new("../../samples/test_tft.w3x").unwrap();
+  #[cfg(target_os = "windows")]
+  let path: Vec<_> = {
+    "../../samples/test_tft.w3x"
+      .as_bytes()
+      .iter()
+      .cloned()
+      .map(u16::from)
+      .chain(std::iter::once(0))
+      .collect()
+  };
+
   let file = CString::new("war3map.j").unwrap();
   unsafe {
     let mut handle: HANDLE = ptr::null_mut();
@@ -29,6 +41,7 @@ fn test_w3x() {
       MPQ_OPEN_NO_LISTFILE | MPQ_OPEN_NO_ATTRIBUTES,
       &mut handle as *mut HANDLE,
     );
+
     assert!(ok);
 
     let mut file_handle: HANDLE = ptr::null_mut();

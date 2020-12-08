@@ -21,8 +21,16 @@ pub struct Archive {
 impl Archive {
   /// Opens a MPQ archive
   pub fn open<P: AsRef<Path>>(path: P, flags: OpenArchiveFlags) -> Result<Self> {
-    let pathstr = path.as_ref().to_str().ok_or_else(|| StormError::NonUtf8)?;
-    let cpath = CString::new(pathstr)?;
+    #[cfg(not(target_os = "windows"))]
+    let cpath = {
+      let pathstr = path.as_ref().to_str().ok_or_else(|| StormError::NonUtf8)?;
+      CString::new(pathstr)?;
+    };
+    #[cfg(target_os = "windows")]
+    let cpath = {
+      use widestring::U16CString;
+      U16CString::from_os_str(path.as_ref()).map_err(|_| StormError::InteriorNul)?.into_vec()
+    };
     let mut handle: HANDLE = ptr::null_mut();
     unsafe {
       unsafe_try_call!(SFileOpenArchive(
@@ -42,7 +50,7 @@ impl Archive {
       let r = SFileHasFile(self.handle, cpath.as_ptr());
       let err = GetLastError();
       if !r && err != ERROR_FILE_NOT_FOUND {
-        return Err(From::from(err));
+        return Err(From::from(ErrorCode(err)));
       }
       Ok(r)
     }
@@ -93,7 +101,7 @@ impl<'a> File<'a> {
       let mut high: DWORD = 0;
       let low = unsafe { SFileGetFileSize(self.file_handle, &mut high as *mut DWORD) };
       if low == SFILE_INVALID_SIZE {
-        return Err(From::from(unsafe { GetLastError() }));
+        return Err(From::from(ErrorCode(unsafe { GetLastError() })));
       }
       let high = (high as u64) << 32;
       let size = high | (low as u64);
@@ -107,7 +115,7 @@ impl<'a> File<'a> {
     if self.need_reset {
       unsafe {
         if SFileSetFilePointer(self.file_handle, 0, ptr::null_mut(), 0) == SFILE_INVALID_SIZE {
-          return Err(From::from(GetLastError()));
+          return Err(From::from(ErrorCode(GetLastError())));
         }
       }
     }
@@ -160,12 +168,13 @@ fn test_read() {
 #[cfg(target_os = "windows")]
 #[test]
 fn test_read_unicode() {
-  use widestring::U16String;
+  use widestring::U16CString;
+  use std::os::windows::ffi::OsStringExt;
   let mut archive = Archive::open(
-    U16String::from_str("../../samples/中文.w3x").to_os_string(),
+    OsString::from_wide(&U16CString::from_str("../../samples/中文.w3x").unwrap().into_vec()),
     OpenArchiveFlags::MPQ_OPEN_NO_LISTFILE | OpenArchiveFlags::MPQ_OPEN_NO_ATTRIBUTES,
   )
-    .unwrap();
+  .unwrap();
   let mut f = archive.open_file("war3map.j").unwrap();
   assert_eq!(
     f.read_all().unwrap(),
@@ -180,7 +189,7 @@ fn test_read_utf8() {
     "../../samples/中文.w3x",
     OpenArchiveFlags::MPQ_OPEN_NO_LISTFILE | OpenArchiveFlags::MPQ_OPEN_NO_ATTRIBUTES,
   )
-    .unwrap();
+  .unwrap();
   let mut f = archive.open_file("war3map.j").unwrap();
   assert_eq!(
     f.read_all().unwrap(),

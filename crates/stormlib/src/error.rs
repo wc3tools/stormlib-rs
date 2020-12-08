@@ -1,4 +1,8 @@
 use thiserror::Error;
+use std::ffi::NulError;
+
+#[derive(Debug)]
+pub struct ErrorCode(pub u32);
 
 #[derive(Error, Debug)]
 pub enum StormError {
@@ -33,18 +37,19 @@ pub enum StormError {
   CanNotComplete,
   #[error("FileCorrupt")]
   FileCorrupt,
-  #[error("UnknownCode({0})")]
-  UnknownCode(u32),
+  #[error("UnknownCode({0:?})")]
+  UnknownCode(ErrorCode),
+  #[cfg(not(target_os = "windows"))]
   #[error("non-utf-8 encoding is not supported")]
   NonUtf8,
   #[error("an interior nul byte was found")]
-  Nul(#[from] std::ffi::NulError),
+  InteriorNul,
 }
 
 pub type Result<T, E = StormError> = std::result::Result<T, E>;
 
-impl From<u32> for StormError {
-  fn from(code: u32) -> Self {
+impl From<ErrorCode> for StormError {
+  fn from(ErrorCode(code): ErrorCode) -> Self {
     use StormError::*;
     match code {
       stormlib_sys::ERROR_FILE_NOT_FOUND => FileNotFound,
@@ -63,7 +68,13 @@ impl From<u32> for StormError {
       stormlib_sys::ERROR_HANDLE_EOF => HandleEof,
       stormlib_sys::ERROR_CAN_NOT_COMPLETE => CanNotComplete,
       stormlib_sys::ERROR_FILE_CORRUPT => FileCorrupt,
-      other => UnknownCode(other),
+      other => UnknownCode(ErrorCode(other)),
     }
+  }
+}
+
+impl From<std::ffi::NulError> for StormError {
+  fn from(_: NulError) -> Self {
+    StormError::InteriorNul
   }
 }
