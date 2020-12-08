@@ -172,3 +172,18 @@ fn test_read_unicode() {
     std::fs::read("../../samples/war3map.j").unwrap()
   );
 }
+
+#[cfg(target_os = "macos")]
+#[test]
+fn test_read_utf8() {
+  let mut archive = Archive::open(
+    "../../samples/中文.w3x",
+    OpenArchiveFlags::MPQ_OPEN_NO_LISTFILE | OpenArchiveFlags::MPQ_OPEN_NO_ATTRIBUTES,
+  )
+    .unwrap();
+  let mut f = archive.open_file("war3map.j").unwrap();
+  assert_eq!(
+    f.read_all().unwrap(),
+    std::fs::read("../../samples/war3map.j").unwrap()
+  );
+}

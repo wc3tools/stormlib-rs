@@ -13,7 +13,8 @@ fn main() {
     // included header files changed.
     .parse_callbacks(Box::new(bindgen::CargoCallbacks))
     .whitelist_type("^S[A-Z].+")
-    .whitelist_function("^S[A-Z].+");
+    .whitelist_function("^S[A-Z].+")
+    .whitelist_var("^ERROR_.+");
 
   for var in VARS {
     bindings = bindings.whitelist_var(var);
