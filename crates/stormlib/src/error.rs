@@ -1,4 +1,3 @@
-use stormlib_sys::ErrorCode;
 use thiserror::Error;
 
 #[derive(Error, Debug)]
@@ -15,6 +14,7 @@ pub enum StormError {
   NotSupported,
   #[error("InvalidParameter")]
   InvalidParameter,
+  #[cfg(target_os = "windows")]
   #[error("NegativeSeek")]
   NegativeSeek,
   #[error("DiskFull")]
@@ -34,7 +34,7 @@ pub enum StormError {
   #[error("FileCorrupt")]
   FileCorrupt,
   #[error("UnknownCode({0})")]
-  UnknownCode(ErrorCode),
+  UnknownCode(u32),
   #[error("non-utf-8 encoding is not supported")]
   NonUtf8,
   #[error("an interior nul byte was found")]
@@ -43,8 +43,8 @@ pub enum StormError {
 
 pub type Result<T, E = StormError> = std::result::Result<T, E>;
 
-impl From<ErrorCode> for StormError {
-  fn from(code: ErrorCode) -> Self {
+impl From<u32> for StormError {
+  fn from(code: u32) -> Self {
     use StormError::*;
     match code {
       stormlib_sys::ERROR_FILE_NOT_FOUND => FileNotFound,
@@ -53,6 +53,7 @@ impl From<ErrorCode> for StormError {
       stormlib_sys::ERROR_NOT_ENOUGH_MEMORY => NotEnoughMemory,
       stormlib_sys::ERROR_NOT_SUPPORTED => NotSupported,
       stormlib_sys::ERROR_INVALID_PARAMETER => InvalidParameter,
+      #[cfg(target_os = "windows")]
       stormlib_sys::ERROR_NEGATIVE_SEEK => NegativeSeek,
       stormlib_sys::ERROR_DISK_FULL => DiskFull,
       stormlib_sys::ERROR_ALREADY_EXISTS => AlreadyExists,

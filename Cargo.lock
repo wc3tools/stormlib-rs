@@ -286,7 +286,6 @@ dependencies = [
  "bitflags",
  "cmake",
  "libc",
- "winapi",
 ]
 
 [[package]]
