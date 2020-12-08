@@ -24,7 +24,7 @@ impl Archive {
     #[cfg(not(target_os = "windows"))]
     let cpath = {
       let pathstr = path.as_ref().to_str().ok_or_else(|| StormError::NonUtf8)?;
-      CString::new(pathstr)?;
+      CString::new(pathstr)?
     };
     #[cfg(target_os = "windows")]
     let cpath = {
