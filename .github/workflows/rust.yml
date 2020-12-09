@@ -11,8 +11,14 @@ env:
 
 jobs:
   test:
-    runs-on: ubuntu-latest
-
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [macos-latest, ubuntu-latest, windows-latest]
+        include:
+        - os: macos-latest
+        - os: ubuntu-latest
+        - os: windows-latest
     steps:
     - uses: actions/checkout@v2
       with:
