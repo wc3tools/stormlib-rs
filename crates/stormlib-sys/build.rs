@@ -36,7 +36,6 @@ fn main() {
     println!("cargo:rustc-link-lib=z");
     println!("cargo:rustc-link-lib=bz2");
   } else if target.contains("linux") {
-    println!("cargo:rustc-link-lib=static=storm");
     println!("cargo:rustc-link-lib=stdc++");
     println!("cargo:rustc-link-lib=z");
     println!("cargo:rustc-link-lib=bz2");
