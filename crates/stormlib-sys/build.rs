@@ -28,19 +28,26 @@ fn main() {
 
   let lib = dst.join("lib");
 
-  let target = env::var("TARGET").unwrap();
-
   // For gcc should link static storm first! (before adding -l flags)
   // That's very important and I've wasted an hour finding it >_<
   // source: https://stackoverflow.com/questions/29199107/c-lz-library-link-order-undefined-reference-to-symbol-inflateinit2
   println!("cargo:rustc-link-search=native={}", lib.display());
   println!("cargo:rustc-link-lib=static=storm");
 
-  if target.contains("apple") {
+  #[cfg(target_os = "windows")]
+  {
+    println!("cargo:rustc-link-lib=user32");
+  } 
+
+  #[cfg(target_os = "macos")]
+  {
     println!("cargo:rustc-link-lib=dylib=c++");
     println!("cargo:rustc-link-lib=z");
     println!("cargo:rustc-link-lib=bz2");
-  } else if target.contains("linux") {
+  } 
+  
+  #[cfg(target_os = "linux")]
+  {
     println!("cargo:rustc-link-lib=stdc++");
     println!("cargo:rustc-link-lib=z");
     println!("cargo:rustc-link-lib=bz2");
