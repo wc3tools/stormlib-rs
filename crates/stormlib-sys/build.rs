@@ -17,6 +17,11 @@ fn main() {
     .cxxflag("-D _UNICODE");
   }
 
+  #[cfg(target_os = "macos")]
+  {
+    cfg.cflag("-Wno-implicit-function-declaration");
+  }
+
   let dst = cfg
     .define("BUILD_SHARED_LIBS", "OFF")
     .build();
