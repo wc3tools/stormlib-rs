@@ -11,27 +11,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cdd91266-1542-4038-8e23-dc390562dc2e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/stormlib-rs.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/crates/stormlib-bindgen/Cargo.toml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/crates/stormlib-bindgen/src/main.rs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/crates/stormlib-bindgen/src/wrapper.hpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/crates/stormlib-sys/src/bindings_windows.rs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/samples/中文.w3x" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cargo.toml" beforeDir="false" afterPath="$PROJECT_DIR$/Cargo.toml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bindgen.sh" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/crates/stormlib-sys/Cargo.toml" beforeDir="false" afterPath="$PROJECT_DIR$/crates/stormlib-sys/Cargo.toml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/crates/stormlib-sys/build.rs" beforeDir="false" afterPath="$PROJECT_DIR$/crates/stormlib-sys/build.rs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/crates/stormlib-sys/src/bindings.rs" beforeDir="false" afterPath="$PROJECT_DIR$/crates/stormlib-sys/src/bindings_macos.rs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/crates/stormlib-sys/src/lib.rs" beforeDir="false" afterPath="$PROJECT_DIR$/crates/stormlib-sys/src/lib.rs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/crates/stormlib/Cargo.toml" beforeDir="false" afterPath="$PROJECT_DIR$/crates/stormlib/Cargo.toml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/crates/stormlib/src/constants.rs" beforeDir="false" afterPath="$PROJECT_DIR$/crates/stormlib/src/constants.rs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/crates/stormlib/src/error.rs" beforeDir="false" afterPath="$PROJECT_DIR$/crates/stormlib/src/error.rs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/crates/stormlib/src/lib.rs" beforeDir="false" afterPath="$PROJECT_DIR$/crates/stormlib/src/lib.rs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/crates/stormlib/src/util.rs" beforeDir="false" afterPath="$PROJECT_DIR$/crates/stormlib/src/util.rs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/deps/StormLib" beforeDir="false" afterPath="$PROJECT_DIR$/deps/StormLib" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,11 +54,6 @@
     </option>
   </component>
   <component name="RunManager" selected="Cargo.check [stormlib-rs]">
-    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" PASS_PARENT_ENVS_2="true">
-      <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="Test test_read" type="CargoCommandRunConfiguration" factoryName="Cargo Command" temporary="true">
       <option name="channel" value="DEFAULT" />
       <option name="command" value="test --package stormlib --lib test_read -- --exact" />
@@ -163,6 +138,7 @@
       <updated>1607399247231</updated>
       <workItem from="1607399248439" duration="5696000" />
       <workItem from="1607405019741" duration="3770000" />
+      <workItem from="1607435460549" duration="1822000" />
     </task>
     <servers />
   </component>
