@@ -19,7 +19,7 @@ fn main() {
 
   #[cfg(target_os = "macos")]
   {
-    cfg.cxxflag("-Wimplicit-function-declaration")
+    cfg.cxxflag("-Wimplicit-function-declaration");
   }
 
   let dst = cfg
