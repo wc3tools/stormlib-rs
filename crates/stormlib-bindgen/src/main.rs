@@ -11,17 +11,17 @@ fn main() {
     .header("./crates/stormlib-bindgen/src/wrapper.hpp")
     // Tell cargo to invalidate the built crate whenever any of the
     // included header files changed.
-    .parse_callbacks(Box::new(bindgen::CargoCallbacks))
-    .whitelist_type("^S[A-Z].+")
-    .whitelist_function("^S[A-Z].+")
-    .whitelist_var("^ERROR_.+");
+    .parse_callbacks(Box::new(bindgen::CargoCallbacks::new()))
+    .allowlist_type("^S[A-Z].+")
+    .allowlist_function("^S[A-Z].+")
+    .allowlist_var("^ERROR_.+");
 
   for var in VARS {
-    bindings = bindings.whitelist_var(var);
+    bindings = bindings.allowlist_var(var);
   }
 
   #[cfg(target_os = "windows")]
-  let bindings = bindings.blacklist_function("SetLastError");
+  let bindings = bindings.blocklist_function("SetLastError");
 
   let bindings = bindings
     // Finish the builder and generate the bindings.
